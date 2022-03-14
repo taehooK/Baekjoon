@@ -1,5 +1,5 @@
-#점화식
-#dp[i] = dp[i - 1] + dp[i + 1]
+ #점화식
+ #dp[i] = dp[i - 1] + dp[i + 1]
 
 def solution(n):
     dp = [0] * (n + 1)
