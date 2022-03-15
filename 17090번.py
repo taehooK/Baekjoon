@@ -13,16 +13,16 @@ def get_input():
     return n, m, field
 
 def solution(n, m, field):
-
     visited = dict()
     passed = dict()
-
     answer = 0
     length = n * m
 
     i = 0
     while i < n and len(visited) < length:
         for j in range(m):#m번만큼 반복
+            if (i, j) in visited:
+                continue
             count = 0
             row = i
             temp = []
