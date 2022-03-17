@@ -29,8 +29,6 @@ def solution(graph, dp):
             for index in graph[subject]:
                 dp[index] -= 1
             dp[subject] -= 1
-
-
     for term in ret:
         print(term, end=' ')
 
