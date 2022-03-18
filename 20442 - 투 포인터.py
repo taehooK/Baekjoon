@@ -1,35 +1,36 @@
+import sys
 def solution(string):
-    position = [0, len(string) - 1]
-    counts = [0] * 2
+    start = 0
+    end = len(string) - 1
+    left_k_count = 0
+    right_k_count = 0
     r_count = string.count('R')
     max_length = 0
 
-    while position[0] <= position[1]:
-        length = min(counts[0], counts[1]) * 2 + r_count
-        max_length = max(max_length, length)
+    while start <= end:
+        max_length = max(max_length, min(left_k_count, right_k_count) * 2 + r_count)
+        if left_k_count <= right_k_count:
+            start += 1
+            while start < len(string):
+                if string[start - 1] == 'K':
+                    left_k_count += 1
+                else:
+                    r_count -= 1
+                if string[start] == 'R':
+                    break
+                start += 1
+        else:
+            end -= 1
+            while end >= 0:
+                if string[end + 1] == 'K':
+                    right_k_count += 1
+                else:
+                    r_count -= 1
 
-        index = 0
-        i = position[0] + 1
-        offset = 1
-        if counts[0] > counts[1]:
-            index = 1
-            i = position[1] - 1
-            offset = -1
+                if string[end] == 'R':
+                    break
+                end -= 1
 
-        while 0 <= i < len(string):
-            if string[i - offset] == 'K':
-                counts[index] += 1
-            else:
-                r_count -= 1
-            if string[i] == 'R':
-                break
-            i += offset
-
-        position[index] = i
     return max_length
-
-string = input()
+string = sys.stdin.readline().strip()
 print(solution(string))
-
-
-
