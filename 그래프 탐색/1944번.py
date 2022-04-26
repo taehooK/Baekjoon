@@ -34,9 +34,6 @@ def solution():
         for j in range(1, n - 1):
             if board[i][j] == 'S' or board[i][j] == 'K':
                 nodes.append((i, j))
-    # 2. 노드 수만큼 반복
-    # 2.1. 길찾기 (모두 탐색할 때까지 그리고 탐색하면 set에 저장)
-    # 중복처리는 셋자료형 이용
     for node in nodes:
         visited = [[0 for _ in range(n)] for _ in range(n)]
         queue = deque()

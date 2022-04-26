@@ -3,12 +3,10 @@ def is_correct():
         strike = 0
         ball = 0
         for i in range(len(array)):
-            index = query[0].find(array[i])
-            if index >= 0:
-                if i == index:
-                    strike += 1
-                else:
-                    ball += 1
+            if array[i] == query[0][i]:
+                strike += 1
+            elif array[i] in query[0]:
+                ball += 1
         if strike != int(query[1]) or ball != int(query[2]):
             return False
     return True
